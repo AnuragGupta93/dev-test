@@ -1,0 +1,38 @@
+const { Icon } = "antd"; 
+// Icons not yet added. Currently using PNG icons.
+
+class Nav extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hover: false
+    };
+  }
+  hoverOn = () => {
+    console.log("On");
+  };
+  hoverOff = () => {
+    console.log("Off");
+  };
+  render() {
+    return (
+      <div
+        className="all"
+        onMouseEnter={this.hoverOn}
+        onMouseLeave={this.hoverOff}
+      >
+        <div className="lefter" />
+        <div className="left" />
+        <div className="center">
+          <div className="explainer">
+            <div className="home" />
+          </div>
+        </div>
+        <div className="right" />
+        <div className="righter" />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Nav />, document.getElementById("root"));

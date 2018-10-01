@@ -1,0 +1,61 @@
+$max-letters: 13
+
+html
+    height: 100%
+
+body
+    min-height: 100%
+    background: #333
+    text-align: center
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-evenly
+
+h1
+    font-family: 'Raleway', sans-serif
+    font-size: 30px
+    font-weight: 200
+
+.underline-box
+    border-bottom: 2px solid white
+    display: inline-block
+    overflow: hidden
+    padding: 30px
+
+.jump-reveal
+    .letter
+        animation: jump-reveal 0.6s normal forwards cubic-bezier(0, 0.5, 0.4, 2)
+        color: white
+        display: inline-block
+        padding: 0 2px
+        text-transform: uppercase
+        transform: translate3d(0, 200%, 0)
+
+        @for $i from 1 through $max-letters
+            &:nth-child(#{$max-letters}n + #{$i})
+                animation-delay: (0.03s * $i)
+
+.rising-reveal
+    .letter
+        animation: rising-reveal 1s normal forwards ease
+        color: white
+        display: inline-block
+        opacity: 0
+        padding: 0 2px
+        text-transform: uppercase
+        transform: rotateX(-90deg)
+        transform-origin: bottom
+
+        @for $i from 1 through $max-letters
+            &:nth-child(#{$max-letters}n + #{$i})
+                animation-delay: (0.05s * $i)
+
+@keyframes jump-reveal
+    100%
+        transform: translate3d(0, 0, 0)
+
+@keyframes rising-reveal
+    100%
+        opacity: 1
+        transform: rotateX(0)
